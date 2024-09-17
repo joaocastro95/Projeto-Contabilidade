@@ -1,0 +1,325 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(224, 255, 223);
+    gap: 50px;
+    font-family: "Urbanist", sans-serif;
+    height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: rgb(113, 192, 111);
+}
+
+.nav {
+    display: flex;
+    width: 100%;
+}
+
+.navBar {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    list-style-type: none;
+    width: 100%;
+    padding: 20px;
+    font-size: 20px;
+    gap: 50px;
+}
+
+.navBar a {
+    text-decoration: none;
+    color: white;
+}
+
+.logoPerfil{
+    margin: 10px;
+}
+
+.logoPerfil img {
+    width: 60px;
+    height: 60px;
+    border-radius: 80px;
+}
+
+
+input[type='file']{
+    display: none;
+}
+
+
+.max-width{
+    max-width: 300px;
+    width: 100%;
+}
+
+#imgPhoto {
+    width: 200px;
+    height:200px ;
+    margin-top: 10%;
+    background-color: #eee;
+    border: 5px solid #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3 ease;
+}
+#imgPhoto:hover{
+    background-color: #afafaf;
+}
+
+
+/* Login - Cadsatro */
+#mainLogin {
+    background-color: rgb(94, 159, 91);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    padding: 20px 0px;
+    transition: transform 0.3s ease;
+}
+
+#mainLogin:hover {
+    transform: scale(1.05);
+}
+
+#sectionLogin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.articleLogin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border: 1px solid yellow;
+}
+
+#articleLoginImg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+}
+
+#articleLoginCampos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+}
+
+#areaImgLogin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
+
+#imgLogin {
+    width: 100%;
+    border-radius: 100px;
+}
+
+.areaLogin {
+    width: 70%;
+    height: 100%;
+    background-color: rgb(113, 192, 111);
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.forms {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.btnCadastro {
+    text-decoration: none;
+    color: white;
+    border: 1px solid white;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+
+#loginCampos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    width: 80%;
+}
+
+.input {
+    border: 0px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.btn {
+    width: 50%;
+    background-color: rgb(2, 122, 32);
+    border: none;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: rgb(1, 97, 25);
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    margin-bottom: 5px;
+    color: white;
+}
+
+.inputLogin {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+/* Home Page */
+#mainIndex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: rgb(113, 192, 111);
+    border-radius: 15px;
+    width: 90%;
+    padding: 20px;
+    gap: 20px;
+    box-sizing: border-box;
+}
+
+#sectionIndex, #asideindex {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: rgb(94, 159, 91);
+    box-sizing: border-box; 
+}
+
+#sectionIndex {
+    width: 70%;
+    min-height: 300px; 
+}
+
+#asideindex {
+    width: 30%;
+    min-height: 300px;
+}
+
+#campoUsuarioNome {
+    font-size: 30px;
+    color: white;
+}
+
+/* Footer */ 
+
+footer {
+    background-color: rgb(113, 192, 111);
+    width: 100%;
+    color: white;
+    font-size: 20px;
+    max-width: 100%;
+    text-align: center;
+}
+
+footer a {
+    text-decoration: none;
+    color: white;
+}
+
+
+/* Alerts */ 
+.alert {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(129, 156, 156);
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 20px;
+    z-index: 1000;
+    text-align: center;
+}
+
+.alertErro {
+    margin: 0;
+    font-size: 18px;
+    color: #fc0202;
+}
+
+.alertAcerto {
+    margin: 0;
+    font-size: 18px;
+    color: #02fc40;
+}
+
+.alertSenha {
+    margin: 0;
+    font-size: 18px;
+    color: #080cfc;
+}
+
+.alert-content p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.alert button {
+    margin-top: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.alert button:hover {
+    background-color: #0056b3;
+}
