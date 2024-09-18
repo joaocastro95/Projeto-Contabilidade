@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>TaxFree</title>
+</head>
+
+<body>
+    <header>
+        
+        <nav class="nav">
+            <ul class="navBar">
+                <li><a href="/">Pagina inicial</a></li>
+                <li><a href="/sobre">Sobre</a></li>
+                <li><a href="/login">Login</a></li>
+            </ul>
+            
+        </nav>
+       
+        <div class="logoPerfil" onclick="abrirJanela()">
+            <img  src="/img/avatarBranco.png" alt="">
+        </div>
+    </header>
+
+    {{{ body }}}
+
+    <footer>
+        <p>Autor:*****<br>
+            <a href="">*****@gmail.com</a>
+        </p>
+    </footer>
+
+    <script>
+        function abrirJanela(){
+            if(window.location.href === "http://localhost:3000/home"){
+                window.location.replace('/perfil')
+            }else {
+                window.location.replace('/login')
+            }
+        }
+    </script>
+
+</body>
+
+</html>
