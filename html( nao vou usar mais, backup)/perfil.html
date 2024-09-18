@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./public/css/style.css">
+    <title>TaxFree</title>
+</head>
+
+<body>
+
+    <header>
+        <nav class="nav">
+            <ul class="navBar">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="">Sobre</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+
+        <div class="logoPerfil" id="imagePreview" onclick="window.location.replace('login.html')">
+            <img src="./public/img/avatarBranco.png" alt="">
+        </div>
+    </header>
+
+    <main id="mainLogin">
+        <section id="sectionLogin">
+            <article id="articleLoginImg">
+                <div id="areaImgLogin">
+                    <div class="max-width">
+                        <div class="imageContainer">
+                            <img src="img/big-photo-camera.png" alt="Selecione uma imagem" id="imgPhoto">
+                        </div>
+                    </div>
+                    <input type="file" id="flImage" name="flImage" accept="images/*">
+                </div>
+            </article>
+
+            <article id="articleLoginCampos">
+                <div class="areaLogin">
+                    <form id="formEdit" class="forms" action="">
+                        <div id="loginCampos">
+                            <div class="input-group">
+                                <label for="username">Digite seu email</label>
+                                <input type="email" id="username" class="inputLogin" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="usernameNew">Digite seu novo email</label>
+                                <input type="email" id="usernameNew" class="inputLogin" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="password">Digite sua senha antiga</label>
+                                <input type="password" id="password" class="inputLogin" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="passwordNew">Digite sua senha nova</label>
+                                <input type="password" id="passwordNew" class="inputLogin" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="passwordConfirm">Confirme sua senha</label>
+                                <input type="password" id="passwordConfirm" class="inputLogin" required>
+                            </div>
+                        </div>
+                        <button class="btn" type="submit">Confirmar edições</button>
+
+                    </form>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <div id="customAlert" class="alert">
+        <div class="alert-header">
+            <h2 id="tituloAlert"></h2>
+        </div>
+        <div class="alert-content">
+            <p id="corpoAlert"></p>
+            <button id="closeAlert">Fechar</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>Autor:*****<br>
+            <a href="">*****@gmail.com</a>
+        </p>
+    </footer>
+
+    <script src="/compements/perfil.js"></script>
+
+</body>
+
+</html>
