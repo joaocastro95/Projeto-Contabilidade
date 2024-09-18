@@ -18,7 +18,7 @@ document.getElementById('formLogin').addEventListener('submit', (event) => {
     }
 });
 
-function showAlert(titulo, corpo, classe) {
+export function showAlert(titulo, corpo, classe) {
     const alertBox = document.getElementById('customAlert');
     document.getElementById('tituloAlert').innerHTML = titulo;
     document.getElementById('corpoAlert').innerHTML = corpo;

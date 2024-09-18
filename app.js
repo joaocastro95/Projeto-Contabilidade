@@ -4,7 +4,8 @@ import exphbs from 'express-handlebars'
 import bodyParser from 'body-parser';
 import path from 'path';
 import { fileURLToPath } from 'url';
-
+import router from './routes/users.js'
+import {User} from './models/User.js'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -12,6 +13,8 @@ const __dirname = path.dirname(__filename);
 const db = sequilize; 
 const app = express();
 const PORT = 3000;
+const Usuario = User;
+
 
 //bodyparser
 app.use(bodyParser.urlencoded({extended: false}));
@@ -36,6 +39,9 @@ app.listen(PORT,() => {
   console.log("esta funfando 3000");
 })
 
+// rotas do user
+app.use('/users', router )
+
 app.get('/', (req,res) => {
     res.render('index');
 })
@@ -55,4 +61,6 @@ app.get('/perfil',(req,res)=>{
 app.get('/login',(req,res)=>{
   res.render('login')
 })
+
+
 
