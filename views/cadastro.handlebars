@@ -35,10 +35,11 @@
                             <input type="password" id="password" name="password" class="inputLogin" required>
                         </div>
                         <div class="input-group">
-                            <label for="newPassword">Confirme sua senha</label>
-                            <input type="password" id="newPassword" name="newPassword" class="inputLogin" required>
+                            <label for="passwordConfirm">Confirme sua senha</label>
+                            <input type="password" id="passwordConfirm" name="passwordConfirm" class="inputLogin" required>
                         </div>
                     </div>
+                   
 
                     <button class="btn" type="submit">Cadastrar conta</button>
 
@@ -46,6 +47,8 @@
             </div>
         </article>
     </section>
+
+    <div id="result"></div>
 </main>
 
 <div id="customAlert" class="alert">
@@ -58,8 +61,4 @@
     </div>
 </div>
 
-<script>
-    const user = document.getElementById('name');
-    console.log(user.value)
-    alert('oi')
-</script>
+<script type="module" src="/ESCRIPTS/cadastro.js"></script>

@@ -1,4 +1,5 @@
 import express from 'express'
+import bcrypt from 'bcrypt';
 import { sequilize } from './db/connection.js';
 import exphbs from 'express-handlebars'
 import bodyParser from 'body-parser';
@@ -13,8 +14,6 @@ const __dirname = path.dirname(__filename);
 const db = sequilize; 
 const app = express();
 const PORT = 3000;
-const Usuario = User;
-
 
 //bodyparser
 app.use(bodyParser.urlencoded({extended: false}));
@@ -29,14 +28,14 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 //db connection
 db.authenticate().then(()=>{
-  console.log('deu bom na conexao')
+  console.log('Êxito na conexão com o banco de dados')
 }).catch(err => {
   console.log("ocorreu um erro na conexao", err)
 });
 
 
 app.listen(PORT,() => {
-  console.log("esta funfando 3000");
+  console.log(`Servidos escutando a porta ${PORT}`);
 })
 
 // rotas do user
@@ -47,7 +46,7 @@ app.get('/', (req,res) => {
 })
 
 app.get('/cadastro',(req,res)=>{
-  res.render('cadastro')
+    res.render('cadastro')
 })
 
 app.get('/home',(req,res)=>{
@@ -62,5 +61,47 @@ app.get('/login',(req,res)=>{
   res.render('login')
 })
 
+// para pagina de cadasro
+app.get('/usuarios/buscar', async (req, res) => {
+  const { email, cpf } = req.query; 
 
+  try {
+      const userByEmail = await User.findOne({ where: { email } });
+      const userByCpf = await User.findOne({ where: { cpf } });
+
+      res.json({
+          emailExists: !!userByEmail,
+          cpfExists: !!userByCpf
+      });
+  } catch (error) {
+      console.error(error);
+      res.status(500).send("Erro ao buscar usuário");
+  }
+});
+
+// para validar login
+app.get('/login/auth', async (req, res) => {
+  const { email, password } = req.query;
+
+  try {
+      const user = await User.findOne({ where: { email } });
+
+      if (!user) {
+          console.log("Usuário não encontrado");
+          return res.status(401).send("Usuário não encontrado");
+      }
+
+      const isMatch = await bcrypt.compare(password, user.password);
+
+      if (!isMatch) {
+          console.log("Senha incorreta");
+          return res.status(401).send("Senha incorreta");
+      }
+      console.log("Login bem-sucedido para:", email);
+      res.redirect('/home');
+  } catch (error) {
+      console.error('Erro ao autenticar:', error);
+      res.status(500).send("Erro ao autenticar usuário");
+  }
+});
 
