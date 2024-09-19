@@ -1,38 +1,44 @@
-import express from 'express'
-const router = express.Router()
+import express from 'express';
 import { User } from '../models/User.js';
-const Usuario = User
+import bcrypt from 'bcrypt';
 
+const router = express.Router();
 
+// Teste de rota
 router.get('/test', (req, res) => {
-    res.send('AEEE MEU FI')
-})
+    res.send('AEEE MEU FI');
+});
 
-//adicionar user
-router.post('/add', (req, res) => {
+// Adicionar usuário
+router.post('/add', async (req, res) => {
+    let { name, email, password, cpf, passwordConfirm } = req.body;
 
-    let { name, email, password, cpf, newPassword } = req.body
-    console.log(password)
-    console.log(newPassword)
-    if (password !== newPassword) {
-        console.log('Erro no cadastro');
+    
+
+    // Verifica se as senhas coincidem
+    if (password !== passwordConfirm) {
+        console.log('Erro no cadastro: senhas não coincidem');
+        return ;
+    }
+   
+    const existingUserEmail = await User.findOne({ where: { email } });
+    const existingUserCPF = await User.findOne({ where: { cpf } });
+    
+    if (existingUserEmail || existingUserCPF) {
+        console.log('Erro no cadastro: usuário já cadastrado!');
         return;
     }
+    
+    // Hasheia a senha antes de armazená-la
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-    Usuario.create({
+    await User.create({
         name,
         email,
-        password,
+        password: hashedPassword,
         cpf
-    })
-        .then(() => {
-            res.redirect('/login')
-        })
-        .catch(err => console.log(err))
-
-})
-
-
-
+    });
+    console.log(password)
+});
 
 export default router;
