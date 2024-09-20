@@ -9,11 +9,28 @@ router.get('/test', (req, res) => {
     res.send('AEEE MEU FI');
 });
 
+//busca a existencia do
+router.get('/buscar', async (req, res) => {
+    const { email, cpf } = req.query;
+
+    try {
+        const emailExists = await User.findOne({ where: { email } });
+        const cpfExists = await User.findOne({ where: { cpf } });
+
+        res.json({
+            emailExists: !!emailExists,
+            cpfExists: !!cpfExists
+        });
+    } catch (error) {
+        console.error('Erro ao buscar usuário:', error);
+        res.status(500).json({ error: 'Erro ao buscar usuário' });
+    }
+});
+
+
 // Adicionar usuário
 router.post('/add', async (req, res) => {
     let { name, email, password, cpf, passwordConfirm } = req.body;
-
-    
 
     // Verifica se as senhas coincidem
     if (password !== passwordConfirm) {
