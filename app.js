@@ -6,8 +6,8 @@ import exphbs from 'express-handlebars';
 import bodyParser from 'body-parser';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { User } from './models/User.js';
-import router from './routes/users.js';
+import { Empresa } from './models/Empresas.js';
+import router from './routes/empresas.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -37,7 +37,7 @@ app.set('view engine', 'handlebars');
 // Pasta estática
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/users', router);
+app.use('/empresas', router);
 
 // Conexão com o banco de dados
 db.authenticate().then(() => {
@@ -58,23 +58,23 @@ app.get('/cadastro', (req, res) => {
 
 // Rota da home do usuário
 app.get('/home', (req, res) => {
-    if (!req.session.user) {
+    if (!req.session.empresa) {
         return res.redirect('/login');
     }
 
     res.render('home', {
-        user: req.session.user
+        empresa: req.session.empresa
     });
 });
 
 // Rota para perfil
 app.get('/perfil', (req, res) => {
-    if (!req.session.user) {
+    if (!req.session.empresa) {
         return res.redirect('/login');
     }
 
     res.render('perfil', {
-        user: req.session.user
+        empresa: req.session.empresa
     });
 });
 
@@ -89,27 +89,28 @@ app.get('/login/auth', async (req, res) => {
     const { email, password } = req.query;
 
     try {
-        const user = await User.findOne({ where: { email } });
+        const empresa = await Empresa.findOne({ where: { email } });
 
-        if (!user) {
+        if (!empresa) {
             console.log("Usuário não encontrado");
-            return res.status(401).send("Usuário não encontrado");
+            return res.status(401).send("Usuário não encontrado")
         }
 
-        const isMatch = await bcrypt.compare(password, user.password);
+        const isMatch = await bcrypt.compare(password, empresa.password);
 
         if (!isMatch) {
             console.log("Senha incorreta");
             return res.status(401).send("Senha incorreta");
         }
-
-        // Armazena as informações do usuário na sessão
-        req.session.user = {
-            id: user.Id,
-            name: user.name,
-            email: user.email,
-            cpf: user.cpf,
-            createdAt: user.createdAt
+        
+           
+       
+        req.session.empresa = {
+            id: empresa.Id,
+            name: empresa.name,
+            email: empresa.email,
+            cnpj: empresa.cnpj,
+            createdAt: empresa.createdAt
         };
         
         console.log("Login bem-sucedido para:", email);
@@ -122,46 +123,50 @@ app.get('/login/auth', async (req, res) => {
 
 // Rota para atualizar o perfil
 app.post('/perfil/update', async (req, res) => {
-    const { email, emailNew, password } = req.body; // Captura os dados do body
-    const userSession = req.session.user; // Obtém o usuário da sessão
-    console.log(userSession);
-    console.log(email, emailNew, password); // Verifica os dados recebidos
+    const { email, emailNew, password } = req.body; 
+    const empresaSession = req.session.empresa; 
+    console.log(empresaSession);
+    console.log(email, emailNew, password); 
 
-    if (!userSession || !userSession.email) {
+    if (!empresaSession || !empresaSession.email) {
         return res.status(401).send("Usuário não autenticado ou email da sessão não encontrado");
     }
 
     try {
-        // Busca o usuário logado usando o email da sessão
-        const user = await User.findOne({ where: { email: userSession.email } });
+   
+        const empresa = await Empresa.findOne({ where: { email: empresaSession.email } });
 
-        if (!user) {
+        if (!empresa) {
             console.log("Usuário não encontrado");
             return res.status(401).send("Usuário não encontrado");
         }
 
-        // Verifica se o email antigo fornecido corresponde ao do banco de dados
-        if (user.email !== email) {
+       
+        if (empresa.email !== email) {
             console.log("Email não corresponde ao cadastrado.");
             return res.status(401).send("Email incorreto");
         }
 
-        // Verifica a senha usando bcrypt.compare
-        const isMatch = await bcrypt.compare(password, user.password);
+      
+        const isMatch = await bcrypt.compare(password, empresa.password);
         console.log(isMatch);
         if (!isMatch) {
             console.log("Senha incorreta.");
             return res.status(401).send("Senha incorreta");
         }
 
-        // Atualiza o email do usuário
-        await User.update(
-            { email: emailNew }, // Atualiza com o novo email
-            { where: { cpf: user.cpf } } // Usa o CPF do usuário para localizar
+        const empresaEmaiExists = await Empresa.findOne({ where: { email : emailNew } });
+        if(empresaEmaiExists) {
+            console.log("Usuário ja possui este email");
+            return res.status(401).send("Usuário ja possui este email")
+        }    
+        
+        await Empresa.update(
+            { email: emailNew }, 
+            { where: { cnpj: empresa.cnpj } } 
         );
 
-        // Atualiza o email na sessão
-        req.session.user.email = emailNew;
+        req.session.empresa.email = emailNew;
 
         console.log("Email atualizado com sucesso para:", emailNew);
         res.status(200).send("Email atualizado com sucesso!");
@@ -170,9 +175,6 @@ app.post('/perfil/update', async (req, res) => {
         res.status(500).send("Erro ao atualizar perfil");
     }
 });
-
-
-
 
 // Inicia o servidor
 app.listen(PORT, () => {

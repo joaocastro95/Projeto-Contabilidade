@@ -3,28 +3,21 @@
     <section id="sectionLogin">
 
         <article id="articleLoginImg">
-            <div id="areaImgLogin">
-                <div class="max-width">
-                    <div class="imageContainer">
-                        <img src="/img/big-photo-camera.png" alt="Selecione uma imagem" id="imgPhoto">
-                    </div>
-                </div>
-                <input type="file" id="flImage" name="flImage" accept="images/*">
-            </div>
+
         </article>
 
         <article id="articleLoginCampos">
             <div class="areaLogin">
 
-                <form id="formCadastro" class="forms" action="/users/add" method="POST">
+                <form id="formCadastro" class="forms" action="/empresas/add" method="POST">
                     <div id="loginCampos">
                         <div class="input-group">
                             <label for="name">Digite seu nome</label>
                             <input type="text" id="name" name="name" class="inputLogin" required>
                         </div>
                         <div class="input-group">
-                            <label for="cpf">Digite seu CPF</label>
-                            <input type="text" id="cpf" name="cpf" class="inputLogin" required>
+                            <label for="cnpj">Digite seu CNPJ</label>
+                            <input type="text" id="cnpj" name="cnpj" class="inputLogin" required>
                         </div>
                         <div class="input-group">
                             <label for="email">Digite seu email</label>
@@ -36,10 +29,11 @@
                         </div>
                         <div class="input-group">
                             <label for="passwordConfirm">Confirme sua senha</label>
-                            <input type="password" id="passwordConfirm" name="passwordConfirm" class="inputLogin" required>
+                            <input type="password" id="passwordConfirm" name="passwordConfirm" class="inputLogin"
+                                required>
                         </div>
                     </div>
-                   
+
 
                     <button class="btn" type="submit">Cadastrar conta</button>
 
