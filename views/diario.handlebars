@@ -1,0 +1,30 @@
+<main id="mainDiario">
+
+    <section id="sectionDiario">
+        {{#each registrosEmpresa}}
+        <article class="articleDiario">
+            <div class="camposArticleDiarioConta">
+                <p><strong>Conta: </strong>{{dataValues.conta}}</p>
+            </div>
+            <div class="camposArticleDiarioDeb">
+                <p><strong>Débito: </strong>{{dataValues.debito}}</p>
+            </div>
+            <div class="camposArticleDiarioCre">
+                <p><strong>Crédito: </strong>{{dataValues.credito}}</p>
+            </div>
+            <div class="camposArticleDiarioHist">
+                <p><strong>Histórico: </strong>{{dataValues.historico}} </p>
+            </div>
+            <div class="camposArticleDiarioDt">
+                <p><strong>Data de criação: </strong> {{createdAt}}</p>
+            </div>
+        </article>
+        {{/each}}
+
+
+    </section>
+
+
+</main>
+
+<script type="module" src="/ESCRIPTS/diario.js"></script>

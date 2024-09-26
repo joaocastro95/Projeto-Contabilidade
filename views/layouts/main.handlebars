@@ -10,38 +10,49 @@
 
 <body>
     <header>
-        
-        <nav class="nav">
-            <ul class="navBar">
-                <li><a href="/">Pagina inicial</a></li>
-                <li><a href="/sobre">Sobre</a></li>
-                <li><a href="/login">Login</a></li>
-            </ul>
-            
-        </nav>
-       
-        <div class="logoPerfil" onclick="abrirJanela()">
-            <img  src="/img/avatarBranco.png" alt="">
+        <div id="logo">
+            <h1 id="tittle"><span style="color: rgb(58, 101, 56);">Tax</span>free</h1>
+         <img src="/img/contabilidade-removebg-preview.png" alt="">
+           
         </div>
+        <nav class="nav">
+            <ul id="navBar" class="navBar">
+                <li><a href="/">Pagina inicial</a></li>
+            </ul>
+        </nav>
+
     </header>
 
     {{{ body }}}
 
     <footer>
-        <p>Autor:*****<br>
-            <a href="">*****@gmail.com</a>
-        </p>
+        <div class="footer-container">
+            <div class="footer-left">
+                <h3>Taxfree</h3>
+                <p>Oferecendo soluções contábeis de confiança para o seu negócio.</p>
+            </div>
+            <div class="footer-center">
+                <h4>Contato</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Rua Senador Feijó, 350, Centro, Santos, (13) 1234-5678</p>
+                <p><i class="fas fa-envelope"></i> grupo@taxfree.com</p>
+            </div>
+            <div class="footer-right">
+                <h4>Siga-nos</h4>
+                <div class="footerLinks">
+                    <a href="#"><i></i>GitHub Danilo</a>
+                    <a href="#"><i></i>GitHub Pedro</a>
+                    <a href="#"><i></i>GitHub Enzo</a>
+                    <a href="#"><i></i>GitHub Isabella</a>
+                    <a href="#"><i></i>GitHub João</a>
+                </div>
+
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Taxfree- Todos os direitos reservados.</p>
+        </div>
     </footer>
 
-    <script>
-        function abrirJanela(){
-            if(window.location.href === "http://localhost:3000/home"){
-                window.location.replace('/perfil')
-            }else {
-                window.location.replace('/login')
-            }
-        }
-    </script>
 
 </body>
 

@@ -1,20 +1,18 @@
-
-
 <main id="mainLogin">
     <section id="sectionLogin">
         <article id="articleLoginImg">
             <div id="areaImgLogin">
-                <img id="imgLogin" src="/img/avatarBranco.png" alt="">
+                
             </div>
         </article>
 
         <article id="articleLoginCampos">
             <div class="areaLogin">
-                <form id="formLogin" class="forms" action="">
+                <form id="formLogin" class="forms" action="/login/auth" method="GET">
                     <div id="loginCampos">
                         <div class="input-group">
-                            <label for="username">Email</label>
-                            <input type="email" id="username" class="inputLogin" required>
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="inputLogin" required>
                         </div>
                         <div class="input-group">
                             <label for="password">Password</label>
@@ -22,7 +20,7 @@
                         </div>
                     </div>
                     <button class="btn" type="submit">Entrar</button>
-                    <a href="#" onclick=esqueciSenha()>Esqueci minha senha!</a>
+                    <a  id="esqcSenha" href="/login">Esqueci minha senha!</a>
                     <a href="/cadastro" class="btnCadastro">Cadastrar-se</a>
                 </form>
             </div>
@@ -40,4 +38,4 @@
     </div>
 </div>
 
-<!--<script src="../ESCRIPTS/script.js"></script>-->
+<script type="module" src="/ESCRIPTS/login.js"></script>
