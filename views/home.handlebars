@@ -1,15 +1,33 @@
 <main id="mainHome">
+    <h1>Nossos serviços</h1>
     <section id="sectionHome">
-        <p id="campoUsuarioNome">Olá, {{empresa.name}}!</p>
-        <p>Seu email: {{empresa.email}}</p>
-        <p>Seu CPF: {{empresa.cnpj}}</p>
-        <p>Seu Id: {{empresa.Id}}</p>
-        <p>Criado em: {{empresa.createdAt}}</p>
+        <article class="articleHome">
+            <h2>Lançamento</h2>
+            <p>O lançamento é onde se pode adicionar um crédico ou um débito a sua conta</p>
+             <a class="homeButton" href="/lancamento">Ir para lançamento</a> 
+        </article>
+
+        <article class="articleHome">
+             <h2>Diario</h2>
+             <p>O diario é onde se pode ver os ultimos registros adicionados</p>
+                <a class="homeButton" href="/diario">Ir para diário</a>
+        </article>
+
+        <article class="articleHome">
+            <h2>Razão</h2>
+            <p>A razão é onde se pode verificar o debito e o crédito para cada conta registrada</p>
+             <a class="homeButton" href="/razao">Ir para razão</a> 
+        </article>
+
+        <article class="articleHome">
+               <h2>Balancete</h2> 
+               <p>O balancete é a junção das razões, onde é visualizada a folha de resultados</p>
+                 <a class="homeButton" href="/balancete">Ir para balancete</a>
+        </article>
+        
     </section>
 
-    <aside id="asideHome">
-
-    </aside>
+  
 </main>
 
 <script type="module" src="/ESCRIPTS/home.js"></script>
