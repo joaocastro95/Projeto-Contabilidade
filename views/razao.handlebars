@@ -1,0 +1,23 @@
+<main id="mainRazao">
+
+    {{#each registrosEmpresa}}
+    <section class="sectionRazao">
+        <h1><strong>{{dataValues.conta}}</strong></h1>
+        <div class="dinheiroArea">
+            <div class="dinheiro">
+                <p>Débito: </p>
+                <p style="color: darkgreen;">{{dataValues.total_debito}}</p>
+            </div>
+            <div class="dinheiro">
+                <p>Crédito: </p>
+                <p style="color: red;">{{dataValues.total_credito}}</p>
+            </div>
+        </div>
+
+
+    </section>
+    {{/each}}
+
+</main>
+
+<script type="module" src="/ESCRIPTS/razao.js"></script>

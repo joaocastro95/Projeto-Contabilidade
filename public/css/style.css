@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
 
-*{
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -15,10 +17,12 @@ body {
     gap: 50px;
     font-family: "Urbanist", sans-serif;
     height: 100vh;
+    max-width: 100%;
 }
 
 header {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -26,61 +30,133 @@ header {
 }
 
 .nav {
+    border-top: 2px solid rgb(85, 143, 84);
     display: flex;
     width: 100%;
 }
 
 .navBar {
+    margin-right: 50px;
     display: flex;
     justify-content: right;
     align-items: center;
     list-style-type: none;
     width: 100%;
     padding: 20px;
-    font-size: 20px;
+    font-size: 24px;
     gap: 50px;
 }
 
 .navBar a {
     text-decoration: none;
+    color: black;
+}
+
+#tittle {
+    font-style: italic;
+    color: rgb(113, 162, 111);
+    font-size: 60px;
+    font-family: "Noto Serif", serif;
+}
+
+#logo {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo img {
+    width: 100px;
+}
+
+/* dropdown */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgb(113, 162, 111);
+    min-width: 100px;
+    z-index: 1;
+    border-radius: 15px;
+
+}
+
+.dropdown-content a {
     color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
 }
 
-.logoPerfil{
-    margin: 10px;
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 
-.logoPerfil img {
-    width: 60px;
-    height: 60px;
-    border-radius: 80px;
-}
-
-
-input[type='file']{
+input[type='file'] {
     display: none;
 }
 
-
-.max-width{
-    max-width: 300px;
+.max-width {
+    max-width: 100px;
     width: 100%;
 }
 
-#imgPhoto {
-    width: 200px;
-    height:200px ;
-    margin-top: 10%;
-    background-color: #eee;
-    border: 5px solid #ccc;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3 ease;
-}
-#imgPhoto:hover{
-    background-color: #afafaf;
+
+
+/* Index */
+#mainIndex {
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+    gap: 100px;
+    padding: 20px 0px;
+
 }
 
+#articleIndex {
+    display: flex;
+    justify-content: space-between;
+   
+}
+
+#articleIndex img{
+    width: 400px;
+}
+
+#divIntro {
+    width:50%;
+    background-color: rgb(94, 159, 91);
+    border-radius: 15px;
+    padding: 20px;
+    height: auto; /* A altura será ajustada ao conteúdo do <p> */
+}
+
+
+#asideIndex {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#asideText {
+    text-align: justify;
+    width: 35%;
+    padding: 20px;
+    background-color: rgb(94, 159, 91);
+    border-radius: 15px;
+}
+
+#sobreGrupo {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    /*background-color: #0056b3;*/
+    padding: 20px;
+}
 
 /* Login - Cadsatro */
 #mainLogin {
@@ -110,7 +186,6 @@ input[type='file']{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
     height: 100%;
     border: 1px solid yellow;
 }
@@ -128,23 +203,13 @@ input[type='file']{
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 10px;
+    padding: 5px;
 }
 
-#areaImgLogin {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-}
 
-#imgLogin {
-    width: 100%;
-    border-radius: 100px;
-}
 
 .areaLogin {
-    width: 70%;
+    width: 80%;
     height: 100%;
     background-color: rgb(113, 192, 111);
     border-radius: 15px;
@@ -218,35 +283,89 @@ input[type='file']{
 }
 
 /* Home Page */
-#mainIndex {
+#mainHome {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     background-color: rgb(113, 192, 111);
     border-radius: 15px;
-    width: 90%;
+    width: 80%;
     padding: 20px;
     gap: 20px;
     box-sizing: border-box;
 }
 
-#sectionIndex, #asideindex {
+#sectionHome {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     padding: 20px;
     border-radius: 15px;
     background-color: rgb(94, 159, 91);
-    box-sizing: border-box; 
-}
-
-#sectionIndex {
-    width: 70%;
-    min-height: 300px; 
-}
-
-#asideindex {
-    width: 30%;
+    box-sizing: border-box;
+    width: 90%;
     min-height: 300px;
+    gap: 20px;
+}
+
+#mainHome h2 {
+    font-size: 35px;
+}
+
+.articleHome{
+    width: 25%;
+    background-color: rgb(123, 221, 118);
+    display: flex;
+    border-radius: 5px;
+    padding: 10px;
+    transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55), width 0.6s, height 0.6s;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align:center;
+    gap: 20px;
+}
+
+.articleHome.grande {
+    width: 40%;
+    font-size: 24px;
+   
+  }
+
+  .articleHome.grande a {
+    width: 200px;
+    height: 50px;
+    font-size: 16px;
+  }
+  
+  .articleHome.pequeno {
+    width: 20%;
+    font-size: 12px ;
+  }
+  
+  .homeButton {
+    text-decoration: none;
+    color: white;
+    background-color: rgb(41, 87, 38);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 5px;
+    height: 40px;
+    width: 150px;
+    transition: 0.3s;
+}
+
+
+.homeButton:hover  {
+    background-color: rgb(137, 221, 129);
+    border: 1px solid rgb(41, 87, 38) 
+}
+
+.homeButton:hover  {
+    color: rgb(41, 87, 38);
 }
 
 #campoUsuarioNome {
@@ -254,24 +373,200 @@ input[type='file']{
     color: white;
 }
 
-/* Footer */ 
+/* Diario */ 
 
-footer {
+#mainDiario {
+    width: 90%;
+    height: 100%;
+    display: flex;
     background-color: rgb(113, 192, 111);
+    justify-content: center;
+    align-items: start;
+    padding: 30px;
+    border-radius: 7px;
+}
+
+#sectionDiario {
     width: 100%;
-    color: white;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(123, 221, 118);
+    padding: 10px;
+    gap: 20px;
+    border-radius: 7px;
+
+}
+
+.articleDiario {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.camposArticleDiarioConta{
+    background-color:#c9dec6 ;
+    border-radius: 5px;
+    width: 30%;
+    padding: 5px;
     font-size: 20px;
-    max-width: 100%;
+    border-bottom: 1px solid #757e74 ;
+    border-left: 1px solid #757e74;
+}
+
+.camposArticleDiarioHist{
+    background-color:#c9dec6 ;
+    border-radius: 5px;
+    width: 50%;
+    padding: 5px;
+    font-size: 20px;
+    border-bottom: 1px solid #757e74 ;
+    border-left: 1px solid #757e74;
+}
+
+.camposArticleDiarioDt{
+    background-color:#c9dec6 ;
+    border-radius: 5px;
+    width: 20%;
+    padding: 5px;
+    font-size: 20px;
+    border-bottom: 1px solid #757e74 ;
+    border-left: 1px solid #757e74;
+}
+
+
+.camposArticleDiarioDeb, .camposArticleDiarioCre{
+    background-color:#c9dec6 ;
+    border-radius: 5px;
+    width: 20%;
+    padding: 5px;
+    font-size: 20px;
+    border-bottom: 1px solid #757e74 ;
+    border-left: 1px solid #757e74;
+}
+
+
+/* Razao */
+
+#mainRazao {
+    display: flex;
+    width: 90%;
+    background-color: rgb(113, 192, 111) ;
+    gap: 10px;
+    justify-content: start;
+    flex-wrap: wrap;
+    padding: 30px;
+}
+
+.sectionRazao{
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(123, 221, 118);
+    border-radius: 5px;
+    width: 32%;
     text-align: center;
 }
 
-footer a {
-    text-decoration: none;
-    color: white;
+.sectionRazao h1 {
+    font-size: 35px;
+    border-bottom: 1px solid black;
+    padding: 5px;
+}
+
+.dinheiroArea{
+    text-align: start;
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+}
+.dinheiro{
+    text-align: start;
+    display: flex;
+    font-size: 20px;
+    justify-content: space-between;
+    padding: 7px;
+
+}
+
+/* Footer */
+footer {
+    background-color: rgb(113, 192, 111);
+    color: #131616;
+    padding: 10px 0;
+    width: 100%;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-left,
+.footer-center,
+.footer-right {
+    flex: 1;
+    min-width: 200px;
+    margin: 5px;
+}
+
+.footer-left h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.footer-left p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.footer-center h4,
+.footer-right h4 {
+    font-size: 18px;
+   /* margin-bottom: 5px;*/
+}
+
+.footer-center p,
+.footer-right a {
+    font-size: 16px;
+    line-height: 1.8;
+    display: block;
+}
+
+.footer-right a {
+    color: #ecf0f1;
+    margin: 0 5px;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.footerLinks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-right a:hover {
+    color: #3498db;
+}
+
+/* Rodapé inferior */
+.footer-bottom {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.footer-bottom p {
+    margin: 0;
+    border-top: 1px solid #7f8c8d;
 }
 
 
-/* Alerts */ 
+/* Alerts */
 .alert {
     display: none;
     position: fixed;
