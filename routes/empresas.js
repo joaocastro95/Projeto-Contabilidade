@@ -32,7 +32,6 @@ router.get('/buscar', async (req, res) => {
 router.post('/add', async (req, res) => {
     let { name, email, password, cnpj, passwordConfirm } = req.body;
 
-    
     if (password !== passwordConfirm) {
         console.log('Erro no cadastro: senhas não coincidem');
         return ;

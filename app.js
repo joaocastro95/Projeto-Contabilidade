@@ -7,12 +7,15 @@ import bodyParser from 'body-parser';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { Empresa } from './models/Empresas.js';
+import { Registro } from './models/Registros.js';
 import router from './routes/empresas.js';
+import routerRegistro from './routes/registros.js';
+import { Op, fn, col } from 'sequelize';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const db = sequilize; 
+const db = sequilize;
 const app = express();
 const PORT = 3000;
 
@@ -38,6 +41,7 @@ app.set('view engine', 'handlebars');
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/empresas', router);
+app.use('/registros', routerRegistro);
 
 // Conexão com o banco de dados
 db.authenticate().then(() => {
@@ -67,6 +71,82 @@ app.get('/home', (req, res) => {
     });
 });
 
+// Rota do diário do usuário
+app.get('/diario', (req, res) => {
+    if (!req.session.empresa) {
+        return res.redirect('/login');
+    }
+
+    Registro.findAll({
+        where: {
+            id_empresa: req.session.empresa.id
+        },
+        order: [
+            ['createdAt', 'DESC']
+        ]
+    })
+    .then(registrosEmpresa => {
+        const registrosFormatados = registrosEmpresa.map(registro => {
+            const data = new Date(registro.createdAt);
+            const ano = data.getFullYear();
+            const mes = String(data.getMonth() + 1).padStart(2, '0');
+            const dia = String(data.getDate()).padStart(2, '0');
+
+            return {
+                ...registro,
+                createdAt: `${ano}-${mes}-${dia}`
+            };
+        });
+
+        res.render('diario', {
+            registrosEmpresa: registrosFormatados
+        });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).send('Erro ao buscar registros.');
+    });
+});
+
+// Rota do lançamento de registros
+app.get('/lancamento', (req, res) => {
+    if (!req.session.empresa) {
+        return res.redirect('/login');
+    }
+    res.render('lancamento', {
+        empresa: req.session.empresa
+    });
+});
+
+// Rota do razão de registros
+app.get('/razao', async (req, res) => {
+    if (!req.session.empresa) {
+        return res.redirect('/login');
+    }
+
+    try {
+        const registrosEmpresa = await Registro.findAll({
+            where: {
+                id_empresa: req.session.empresa.id
+            },
+            attributes: [
+                'conta',
+                [fn('SUM', col('debito')), 'total_debito'],
+                [fn('SUM', col('credito')), 'total_credito']
+            ],
+            group: ['conta'],
+            order: [['createdAt', 'DESC']]
+        });
+
+        res.render('razao', {
+            registrosEmpresa
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(500).send('Erro ao buscar registros.');
+    }
+});
+
 // Rota para perfil
 app.get('/perfil', (req, res) => {
     if (!req.session.empresa) {
@@ -82,8 +162,6 @@ app.get('/login', (req, res) => {
     res.render('login');
 });
 
-
-
 // Rota para autenticar login
 app.get('/login/auth', async (req, res) => {
     const { email, password } = req.query;
@@ -93,7 +171,7 @@ app.get('/login/auth', async (req, res) => {
 
         if (!empresa) {
             console.log("Usuário não encontrado");
-            return res.status(401).send("Usuário não encontrado")
+            return res.status(401).send("Usuário não encontrado");
         }
 
         const isMatch = await bcrypt.compare(password, empresa.password);
@@ -102,17 +180,15 @@ app.get('/login/auth', async (req, res) => {
             console.log("Senha incorreta");
             return res.status(401).send("Senha incorreta");
         }
-        
-           
-       
+
         req.session.empresa = {
-            id: empresa.Id,
+            id: empresa.id,
             name: empresa.name,
             email: empresa.email,
             cnpj: empresa.cnpj,
             createdAt: empresa.createdAt
         };
-        
+
         console.log("Login bem-sucedido para:", email);
         res.redirect('/home');
     } catch (error) {
@@ -123,17 +199,16 @@ app.get('/login/auth', async (req, res) => {
 
 // Rota para atualizar o perfil
 app.post('/perfil/update', async (req, res) => {
-    const { email, emailNew, password } = req.body; 
-    const empresaSession = req.session.empresa; 
+    const { email, emailNew, password } = req.body;
+    const empresaSession = req.session.empresa;
     console.log(empresaSession);
-    console.log(email, emailNew, password); 
+    console.log(email, emailNew, password);
 
     if (!empresaSession || !empresaSession.email) {
         return res.status(401).send("Usuário não autenticado ou email da sessão não encontrado");
     }
 
     try {
-   
         const empresa = await Empresa.findOne({ where: { email: empresaSession.email } });
 
         if (!empresa) {
@@ -141,29 +216,26 @@ app.post('/perfil/update', async (req, res) => {
             return res.status(401).send("Usuário não encontrado");
         }
 
-       
         if (empresa.email !== email) {
             console.log("Email não corresponde ao cadastrado.");
             return res.status(401).send("Email incorreto");
         }
 
-      
         const isMatch = await bcrypt.compare(password, empresa.password);
-        console.log(isMatch);
         if (!isMatch) {
             console.log("Senha incorreta.");
             return res.status(401).send("Senha incorreta");
         }
 
-        const empresaEmaiExists = await Empresa.findOne({ where: { email : emailNew } });
-        if(empresaEmaiExists) {
-            console.log("Usuário ja possui este email");
-            return res.status(401).send("Usuário ja possui este email")
-        }    
-        
+        const empresaEmaiExists = await Empresa.findOne({ where: { email: emailNew } });
+        if (empresaEmaiExists) {
+            console.log("Usuário já possui este email");
+            return res.status(401).send("Usuário já possui este email");
+        }
+
         await Empresa.update(
-            { email: emailNew }, 
-            { where: { cnpj: empresa.cnpj } } 
+            { email: emailNew },
+            { where: { cnpj: empresa.cnpj } }
         );
 
         req.session.empresa.email = emailNew;
@@ -178,5 +250,5 @@ app.post('/perfil/update', async (req, res) => {
 
 // Inicia o servidor
 app.listen(PORT, () => {
-    console.log(`Servidor escutando a porta ${PORT}`);
+    console.log(`Servidor escutando na porta ${PORT}`);
 });
