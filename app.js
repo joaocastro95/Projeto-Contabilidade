@@ -34,7 +34,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Configuração do handlebars
 app.set('views', path.join(__dirname, 'views'));
-app.engine('handlebars', exphbs.engine({ defaultLayout: 'main' }));
+app.engine('handlebars', exphbs.engine({
+    defaultLayout: 'main',
+    helpers: {
+        abs: function (value) {
+            return Math.abs(value); // Retorna o valor absoluto
+        },
+        eq: function (a, b) {
+            return a === b; // Verifica se os valores são iguais
+        }
+    }
+}));
 app.set('view engine', 'handlebars');
 
 // Pasta estática
@@ -85,27 +95,27 @@ app.get('/diario', (req, res) => {
             ['createdAt', 'DESC']
         ]
     })
-    .then(registrosEmpresa => {
-        const registrosFormatados = registrosEmpresa.map(registro => {
-            const data = new Date(registro.createdAt);
-            const ano = data.getFullYear();
-            const mes = String(data.getMonth() + 1).padStart(2, '0');
-            const dia = String(data.getDate()).padStart(2, '0');
+        .then(registrosEmpresa => {
+            const registrosFormatados = registrosEmpresa.map(registro => {
+                const data = new Date(registro.createdAt);
+                const ano = data.getFullYear();
+                const mes = String(data.getMonth() + 1).padStart(2, '0');
+                const dia = String(data.getDate()).padStart(2, '0');
 
-            return {
-                ...registro,
-                createdAt: `${ano}-${mes}-${dia}`
-            };
-        });
+                return {
+                    ...registro,
+                    createdAt: `${ano}-${mes}-${dia}`
+                };
+            });
 
-        res.render('diario', {
-            registrosEmpresa: registrosFormatados
+            res.render('diario', {
+                registrosEmpresa: registrosFormatados
+            });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).send('Erro ao buscar registros.');
         });
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).send('Erro ao buscar registros.');
-    });
 });
 
 // Rota do lançamento de registros
@@ -146,6 +156,69 @@ app.get('/razao', async (req, res) => {
         res.status(500).send('Erro ao buscar registros.');
     }
 });
+
+// Rota do balancete de registros
+app.get('/balancete', async (req, res) => {
+    if (!req.session.empresa) {
+        return res.redirect('/login');
+    }
+
+    try {
+        const registrosEmpresa = await Registro.findAll({
+            where: {
+                id_empresa: req.session.empresa.id
+            },
+            attributes: [
+                'conta',
+                [fn('SUM', col('debito')), 'total_debito'],
+                [fn('SUM', col('credito')), 'total_credito']
+            ],
+            group: ['conta'],
+            order: [['createdAt', 'DESC']]
+        });
+
+        const registrosComTotal = registrosEmpresa.map(registro => {
+            const total_debito = parseFloat(registro.get('total_debito')) || 0;
+            const total_credito = parseFloat(registro.get('total_credito')) || 0;
+            const total = total_debito - total_credito;
+
+            return {
+                conta: registro.get('conta'),
+                total_debito,
+                total_credito,
+                total,
+                isPositive: total > 0,
+                isNegative: total < 0,
+                isPL: registro.get('conta') === 'Capital Social'
+            };
+        });
+
+      
+        const totalAtivos = registrosComTotal
+            .filter(registro => registro.isPositive && registro.conta !== 'Capital Social')
+            .reduce((sum, registro) => sum + registro.total, 0); 
+
+        const totalPassivos = registrosComTotal
+            .filter(registro => registro.isNegative) 
+            .reduce((sum, registro) => sum + registro.total, 0); 
+
+        const totalPatrimonioLiquido = registrosComTotal
+            .filter(registro => registro.isPL)
+            .reduce((sum, registro) => sum + registro.total, 0); 
+
+            res.render('balancete', {
+                registrosComTotal,
+                totalAtivos,
+                totalPassivos,
+                totalPatrimonioLiquido 
+            });
+    } catch (err) {
+        console.log(err);
+        res.status(500).send('Erro ao buscar registros.');
+    }
+});
+
+
 
 // Rota para perfil
 app.get('/perfil', (req, res) => {

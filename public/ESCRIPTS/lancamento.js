@@ -3,9 +3,18 @@ document.addEventListener("DOMContentLoaded", function () {
     navBar.innerHTML += '<li><a href="/home">Home</a></li>'
     navBar.innerHTML += '<li class="dropdown"> <a href="/perfil">Perfil</a><div class="dropdown-content"><a href="/perfil">Editar perfil</a><hr><a href="/login">Sair</a></div></li>'
 
-    document.getElementById('formLancamento').addEventListener('submit',  (event) => {
-       
+    document.getElementById('formLancamento1').addEventListener('submit',  (event) => {
         showAlert('Êxito', 'Lançamento salvo com sucesso', 'alertAcerto');
+        setTimeout(() => {
+            document.getElementById('formLancamento1').reset(); 
+        }, 2000);
+    });
+
+    document.getElementById('formLancamento2').addEventListener('submit',  (event) => {
+        showAlert('Êxito', 'Lançamento salvo com sucesso', 'alertAcerto');
+        setTimeout(() => {
+            document.getElementById('formLancamento2').reset(); 
+        }, 2000);
     });
 
 
@@ -18,9 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         document.getElementById('closeAlert').addEventListener('click', function () {
             alertBox.style.display = 'none';
-            if (classe === 'alertAcerto') {
-                window.location.replace('/home');
-            }
+            
         });
     }
 

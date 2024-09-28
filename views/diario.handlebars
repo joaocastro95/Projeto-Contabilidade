@@ -1,6 +1,8 @@
 <main id="mainDiario">
 
     <section id="sectionDiario">
+        {{#if registrosEmpresa }}
+
         {{#each registrosEmpresa}}
         <article class="articleDiario">
             <div class="camposArticleDiarioConta">
@@ -21,6 +23,17 @@
         </article>
         {{/each}}
 
+        {{else}}
+
+        <article style="align-items: center;" class="articleDiario">
+            <div id="diarioSemLancamento">
+                <h1>Não possui lançamentos ainda!</h1>
+                <h2>Gostaria de fazer um? </h2>
+                <a class="homeButton" href="/lancamento">Ir para lançamento</a>
+            </div>
+        </article>
+
+        {{/if}}
 
     </section>
 

@@ -13,7 +13,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    background-color: rgb(224, 255, 223);
+    background-color: #D0EBF5;
     gap: 50px;
     font-family: "Urbanist", sans-serif;
     height: 100vh;
@@ -26,11 +26,11 @@ header {
     justify-content: center;
     align-items: center;
     width: 100%;
-    background-color: rgb(113, 192, 111);
+    background-color: #2F5D1C;
 }
 
 .nav {
-    border-top: 2px solid rgb(85, 143, 84);
+    border-top: 2px solid rgb(151, 216, 150);
     display: flex;
     width: 100%;
 }
@@ -49,12 +49,12 @@ header {
 
 .navBar a {
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 #tittle {
     font-style: italic;
-    color: rgb(113, 162, 111);
+    color: rgb(147, 221, 144);
     font-size: 60px;
     font-family: "Noto Serif", serif;
 }
@@ -120,20 +120,21 @@ input[type='file'] {
 #articleIndex {
     display: flex;
     justify-content: space-between;
-   
+
 }
 
-#articleIndex img{
+#articleIndex img {
     width: 400px;
 }
 
 #divIntro {
-    width:50%;
+    width: 50%;
     background-color: rgb(94, 159, 91);
     border-radius: 15px;
+    color: white;
     padding: 20px;
-    height: auto; /* A altura será ajustada ao conteúdo do <p> */
 }
+
 
 
 #asideIndex {
@@ -148,6 +149,7 @@ input[type='file'] {
     padding: 20px;
     background-color: rgb(94, 159, 91);
     border-radius: 15px;
+    color: white;
 }
 
 #sobreGrupo {
@@ -160,7 +162,7 @@ input[type='file'] {
 
 /* Login - Cadsatro */
 #mainLogin {
-    background-color: rgb(94, 159, 91);
+    background: linear-gradient(to right, #6DBB45, #468AAE);
     border-radius: 15px;
     display: flex;
     justify-content: center;
@@ -211,7 +213,9 @@ input[type='file'] {
 .areaLogin {
     width: 80%;
     height: 100%;
-    background-color: rgb(113, 192, 111);
+    ;
+    /* Mescla o verde e azul gradualmente */
+    background-color: rgba(255, 255, 255, 0.3);
     border-radius: 15px;
     padding: 20px;
 }
@@ -288,7 +292,7 @@ input[type='file'] {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(113, 192, 111);
+    background: linear-gradient(to right, rgb(113, 192, 111), #2B5672);
     border-radius: 15px;
     width: 80%;
     padding: 20px;
@@ -296,12 +300,17 @@ input[type='file'] {
     box-sizing: border-box;
 }
 
+#mainHome h1 {
+    color: white;
+    font-size: 50px;
+}
+
 #sectionHome {
     display: flex;
     justify-content: center;
     padding: 20px;
     border-radius: 15px;
-    background-color: rgb(94, 159, 91);
+    background-color: #468AAE;
     box-sizing: border-box;
     width: 90%;
     min-height: 300px;
@@ -309,12 +318,12 @@ input[type='file'] {
 }
 
 #mainHome h2 {
-    font-size: 35px;
+    font-size: 30px;
 }
 
-.articleHome{
+.articleHome {
     width: 25%;
-    background-color: rgb(123, 221, 118);
+    background-color: rgba(255, 255, 255, 0.3);
     display: flex;
     border-radius: 5px;
     padding: 10px;
@@ -322,28 +331,28 @@ input[type='file'] {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    text-align:center;
+    text-align: center;
     gap: 20px;
 }
 
 .articleHome.grande {
     width: 40%;
     font-size: 24px;
-   
-  }
 
-  .articleHome.grande a {
+}
+
+.articleHome.grande a {
     width: 200px;
     height: 50px;
     font-size: 16px;
-  }
-  
-  .articleHome.pequeno {
+}
+
+.articleHome.pequeno {
     width: 20%;
-    font-size: 12px ;
-  }
-  
-  .homeButton {
+    font-size: 12px;
+}
+
+.homeButton {
     text-decoration: none;
     color: white;
     background-color: rgb(41, 87, 38);
@@ -359,12 +368,12 @@ input[type='file'] {
 }
 
 
-.homeButton:hover  {
+.homeButton:hover {
     background-color: rgb(137, 221, 129);
-    border: 1px solid rgb(41, 87, 38) 
+    border: 1px solid rgb(41, 87, 38)
 }
 
-.homeButton:hover  {
+.homeButton:hover {
     color: rgb(41, 87, 38);
 }
 
@@ -373,13 +382,126 @@ input[type='file'] {
     color: white;
 }
 
-/* Diario */ 
+
+/* lancamento */
+
+#mainLancamento {
+    background: linear-gradient(to right, rgb(113, 192, 111), #2B5672);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    gap: 20px;
+    padding: 20px;
+}
+
+.sectionLancamento {
+    display: flex;
+    background-color: rgba(94, 159, 91, 0.5);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    border-radius: 5px;
+}
+
+.articleLancamentoCampos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    padding: 10px;
+}
+
+.btnLancamento {
+    width: 100%;
+    background-color: rgb(41, 87, 38);
+    border: none;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    color: white;
+    transition: 0.3s;
+}
+
+.btnLancamento:hover {
+    border: 1px solid rgb(41, 87, 38);
+    background-color: rgb(30, 160, 62);
+    color: black;
+}
+
+.areaLancamento {
+    width: 80%;
+    height: 100%;
+    background-color: rgb(113, 192, 111);
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.formsLancamento {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.sectionLancamento2 {
+    display: flex;
+    background-color: rgba(70, 138, 175, 0.5);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    border-radius: 5px;
+}
+
+.btnLancamento2 {
+    width: 100%;
+    background-color: #2B5672;
+    border: none;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    color: white;
+    transition: 0.3s;
+}
+
+.btnLancamento2:hover {
+    border: 1px solid #2B5672;
+    background-color: #6aa0c4;
+    color: black;
+}
+
+.areaLancamento2 {
+    width: 80%;
+    height: 100%;
+    background-color: #76B8D4;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+
+.LancamentoCampos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    width: 80%;
+}
+
+
+
+
+/* Diario */
 
 #mainDiario {
     width: 90%;
-    height: 100%;
     display: flex;
-    background-color: rgb(113, 192, 111);
+    background-color:  #2F5D1C;
     justify-content: center;
     align-items: start;
     padding: 30px;
@@ -390,7 +512,7 @@ input[type='file'] {
     width: 100%;
     display: flex;
     flex-direction: column;
-    background-color: rgb(123, 221, 118);
+    background-color:  #549c35;
     padding: 10px;
     gap: 20px;
     border-radius: 7px;
@@ -401,48 +523,74 @@ input[type='file'] {
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 20px;
 }
 
-.camposArticleDiarioConta{
-    background-color:#c9dec6 ;
+#diarioSemLancamento {
+    display: flex;
+    color: white;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+#diarioSemLancamento h1 {
+    font-size: 35px;
+}
+
+#diarioSemLancamento h2 {
+    font-size: 25px;
+}
+
+#diarioSemLancamento .homeButton {
+    height: 60px;
+    width: 200px;
+    font-size: 18px;
+}
+
+
+.camposArticleDiarioConta {
+    background-color:  #D4EEC7;
     border-radius: 5px;
     width: 30%;
     padding: 5px;
     font-size: 20px;
-    border-bottom: 1px solid #757e74 ;
-    border-left: 1px solid #757e74;
+    border-bottom: 1px solid #305720;
+    border-left: 1px solid #305720;
 }
 
-.camposArticleDiarioHist{
-    background-color:#c9dec6 ;
+.camposArticleDiarioHist {
+    background-color:  #D4EEC7;
     border-radius: 5px;
     width: 50%;
     padding: 5px;
     font-size: 20px;
-    border-bottom: 1px solid #757e74 ;
-    border-left: 1px solid #757e74;
+    border-bottom: 1px solid #305720;
+    border-left: 1px solid #305720;
 }
 
-.camposArticleDiarioDt{
-    background-color:#c9dec6 ;
+.camposArticleDiarioDt {
+    background-color:  #D4EEC7;
     border-radius: 5px;
     width: 20%;
     padding: 5px;
     font-size: 20px;
-    border-bottom: 1px solid #757e74 ;
-    border-left: 1px solid #757e74;
+    border-bottom: 1px solid #305720;
+    border-left: 1px solid #305720;
 }
 
 
-.camposArticleDiarioDeb, .camposArticleDiarioCre{
-    background-color:#c9dec6 ;
+.camposArticleDiarioDeb,
+.camposArticleDiarioCre {
+    background-color:  #D4EEC7;
     border-radius: 5px;
     width: 20%;
     padding: 5px;
     font-size: 20px;
-    border-bottom: 1px solid #757e74 ;
-    border-left: 1px solid #757e74;
+    border-bottom: 1px solid #305720;
+    border-left: 1px solid #305720;
 }
 
 
@@ -451,18 +599,29 @@ input[type='file'] {
 #mainRazao {
     display: flex;
     width: 90%;
-    background-color: rgb(113, 192, 111) ;
+    background-color: #2B5672;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 5px;
+    
+}
+
+.campoRazao{
+    display: flex;
+    width: 100%;
+    background-color: #3889b4;
     gap: 10px;
     justify-content: start;
     flex-wrap: wrap;
     padding: 30px;
+    border-radius: 5px;
 }
 
-.sectionRazao{
+.sectionRazao {
     padding: 10px;
     justify-content: center;
     align-items: center;
-    background-color: rgb(123, 221, 118);
+    background-color:#a6e2f8;
     border-radius: 5px;
     width: 32%;
     text-align: center;
@@ -474,13 +633,14 @@ input[type='file'] {
     padding: 5px;
 }
 
-.dinheiroArea{
+.dinheiroArea {
     text-align: start;
     display: flex;
     justify-content: start;
     flex-direction: column;
 }
-.dinheiro{
+
+.dinheiro {
     text-align: start;
     display: flex;
     font-size: 20px;
@@ -489,10 +649,106 @@ input[type='file'] {
 
 }
 
+/* Balancete */
+
+#mainBalancete {
+    display: flex;
+    width: 90%;
+    background-color: rgb(26, 155, 24);
+    padding: 20px;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 5px;
+    
+}
+
+.campoBalancete{
+    display: flex;
+    width: 90%;
+    height: 100%;
+    justify-content:center;
+    align-items: start;
+    background-color: rgba(123, 221, 118,0.6);
+    border-radius: 5px;
+}
+
+.sectionBalancete {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 15px;
+    padding: 30px;
+}
+
+.asideBalancete {
+    width: 50%;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    gap: 40px;
+}
+
+.articleBalancete {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+   
+    gap: 20px;
+    padding: 40px;
+    border-radius: 5px;
+}
+
+.articleBalancete h1 {
+    font-size: 35px;
+}
+
+.articleBalancete h2 {
+    font-size: 25px;
+}
+
+
+.contaCampo {
+    width: 90%;
+    background-color: #76B8D4;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+    font-size: 20px;
+}
+
+
+.passivos {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.patrimonioLiquido {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
 /* Footer */
 footer {
-    background-color: rgb(113, 192, 111);
-    color: #131616;
+    background-color: #2F5D1C;
+    color: white;
     padding: 10px 0;
     width: 100%;
     text-align: center;
@@ -527,7 +783,7 @@ footer {
 .footer-center h4,
 .footer-right h4 {
     font-size: 18px;
-   /* margin-bottom: 5px;*/
+    /* margin-bottom: 5px;*/
 }
 
 .footer-center p,
