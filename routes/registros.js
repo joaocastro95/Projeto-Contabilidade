@@ -4,9 +4,6 @@ import { Registro } from '../models/Registros.js';
 
 const routerRegistro = express.Router();
 
-routerRegistro.get('/test', (req, res) => {
-    res.send('aqui foi registro em ');
-});
 
 routerRegistro.post('/add', async (req, res) => {
     let {conta, debito, credito, id_empresa,historico} = req.body;

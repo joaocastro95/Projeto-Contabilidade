@@ -1,64 +1,35 @@
 <main id="mainBalancete">
-
-    <div  class="campoBalancete">
-        {{#if registrosComTotal}}
-
-        <section class="sectionBalancete">
-            <h1>ATIVOS</h1>
-
-            {{#each registrosComTotal}}
+    {{#if registrosComTotal }}
+    {{#each registrosComTotal}}
+    <section id="sectionBalancete">
+        <div class="areaBalancete">
+            <p class="itemBalancete">Conta: {{conta}}</p>
+            <p class="itemBalancete">Débito: {{total_debito}}</p>
+            <p class="itemBalancete">Crédito: {{total_credito}}</p>
             {{#if isPositive}}
-            {{#unless (eq conta "Capital Social")}}
-            <div class="contaCampo">
-                <p>Conta: {{conta}}</p>
-                <p style="color: rgb(9, 241, 9);">R$ {{ abs total}}</p>
-            </div>
-            {{/unless}}
+            <p class="itemBalancete">Saldo devedor: {{abs total}}</p>
             {{/if}}
-            {{/each}}
-
-        </section>
-
-        <aside class="asideBalancete">
-            <div class="passivos">
-                <h1>PASSIVOS</h1>
-
-                {{#each registrosComTotal}}
-                {{#if isNegative}}
-                <div class="contaCampo">
-                    <p>Conta: {{conta}}</p>
-                    <p style="color: red;">R$ {{ abs total}}</p>
-                </div>
-                {{/if}}
-                {{/each}}
-
+            {{#if isNegative}}
+            <p class="itemBalancete">Saldo credor: {{abs total}}</p>
+            {{/if}}
+            {{#if isZero}}
+            <p class="itemBalancete">Saldo: 0</p>
+            {{/if}}
+        </div>
+    </section>
+    {{/each}}
+    {{else}}
+    <section id="sectionBalancete">
+        <article style="align-items: center;" class="articleDiario">
+            <div id="diarioSemLancamento">
+                <h1>Não possui lançamentos ainda!</h1>
+                <h2>Gostaria de fazer um? </h2>
+                <a class="homeButton" href="/lancamento">Ir para lançamento</a>
             </div>
-            <div class="patrimonioLiquido">
-                <h1>PATRIMONIO LIQUIDO</h1>
-
-                {{#each registrosComTotal}}
-                {{#if isPL}}
-                <div class="contaCampo">
-                    <p>Conta: {{conta}}</p>
-                    <p style="color: red;">R$ {{ abs total}}</p>
-                </div>
-                {{/if}}
-                {{/each}}
-            </div>
-        </aside>
-        {{else}}
-
-        <article class="articleBalancete">
-            <h1>Não possui lançamentos ainda!</h1>
-            <h2>Gostaria de fazer um? </h2>
-            <a class="homeButton" href="/lancamento">Ir para lançamento</a>
         </article>
-
-        {{/if}}
-    </div>
+    </section>
+    {{/if}}
 </main>
-
-
 
 <div id="customAlert" class="alert">
     <div class="alert-header">
@@ -70,34 +41,7 @@
     </div>
 </div>
 
-<script type="module">
-    const navBar = document.getElementById('navBar')
-    navBar.innerHTML += '<li><a href="/home">Home</a></li>'
-    navBar.innerHTML += '<li class="dropdown"> <a href="/perfil">Perfil</a><div class="dropdown-content"><a href="/perfil">Editar perfil</a><hr><a href="/login">Sair</a></div></li>'
-    const totalAtivos = {{ totalAtivos }};
-    const totalPassivos = {{ totalPassivos }};
-    const totalPatrimonioLiquido = {{ totalPatrimonioLiquido }};
+<script type="module" src="/ESCRIPTS/balancete.js"></script>
 
-    console.log(totalAtivos)
-    console.log(totalPassivos)
-    console.log(totalPatrimonioLiquido)
 
-    if (-(totalPassivos) + totalPatrimonioLiquido !== totalAtivos) {
-        showAlert('Atenção', 'Identificamos que seus ativos e passivos <br> não são equivalentes neste momento', 'alertErro');
-    }
-
-    function showAlert(titulo, corpo, classe) {
-        const alertBox = document.getElementById('customAlert');
-        document.getElementById('tituloAlert').innerHTML = titulo;
-        document.getElementById('corpoAlert').innerHTML = corpo;
-        alertBox.className = `alert ${classe}`;
-        alertBox.style.display = 'block';
-
-        document.getElementById('closeAlert').addEventListener('click', function () {
-            alertBox.style.display = 'none';
-            if (classe === 'alertAcerto') {
-                window.location.replace('/login');
-            }
-        });
-    }
 </script>

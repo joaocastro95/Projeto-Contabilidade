@@ -391,8 +391,10 @@ input[type='file'] {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 60%;
     gap: 20px;
+    flex-direction: column;
+    max-width: 1300px;
+    width: 100%;
     padding: 20px;
 }
 
@@ -402,7 +404,17 @@ input[type='file'] {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 40%;
+    width: 25%;
+    border-radius: 5px;
+}
+
+.sectionLancamento2 {
+    display: flex;
+    background-color: rgba(70, 138, 175, 0.5);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
     border-radius: 5px;
 }
 
@@ -410,34 +422,111 @@ input[type='file'] {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 90%;
+    width: 100%;
+    padding: 10px;
+    gap: 40px;
+}
+
+.articleLancamentoCampos2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     padding: 10px;
 }
 
-.btnLancamento {
+.areaLancamento1 {
+    width: 90%;
+    height: 100%;
+    background-color: rgb(113, 192, 111);
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.areaLancamento2 {
+    width: 90%;
+    height: 100%;
+    background-color: #76B8D4;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+#localDebitos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+}
+
+#localCreditos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+}
+
+.areaBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    gap: 40px;
+}
+
+.adicionaDeb {
     width: 100%;
     background-color: rgb(41, 87, 38);
     border: none;
-    padding: 5px;
+    padding: 15px;
     font-size: 16px;
     border-radius: 5px;
     color: white;
     transition: 0.3s;
 }
 
-.btnLancamento:hover {
+.adicionaCre {
+    width: 100%;
+    background-color: #2B5672;
+    border: none;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    color: white;
+    transition: 0.3s;
+}
+
+
+.btnLancamentoEnvio {
+    width: 100%;
+    background: linear-gradient(to right, rgb(41, 87, 38), #2B5672);
+    border: none;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    color: white;
+    transition: 0.3s;
+}
+
+.adicionaDeb:hover {
     border: 1px solid rgb(41, 87, 38);
     background-color: rgb(30, 160, 62);
     color: black;
 }
 
-.areaLancamento {
-    width: 80%;
-    height: 100%;
-    background-color: rgb(113, 192, 111);
-    border-radius: 15px;
-    padding: 20px;
+.adicionaCre:hover {
+    border: 1px solid #2B5672;
+    background-color: #60a2ce;
+    color: black;
 }
+
+
+.btnLancamentoEnvio:hover {
+    border: 1px solid #2B5672;
+    background: linear-gradient(to right, rgb(30, 160, 62), #60a2ce);
+    color: black;
+}
+
+
 
 .formsLancamento {
     width: 100%;
@@ -449,42 +538,6 @@ input[type='file'] {
     gap: 20px;
 }
 
-.sectionLancamento2 {
-    display: flex;
-    background-color: rgba(70, 138, 175, 0.5);
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 40%;
-    border-radius: 5px;
-}
-
-.btnLancamento2 {
-    width: 100%;
-    background-color: #2B5672;
-    border: none;
-    padding: 5px;
-    font-size: 16px;
-    border-radius: 5px;
-    color: white;
-    transition: 0.3s;
-}
-
-.btnLancamento2:hover {
-    border: 1px solid #2B5672;
-    background-color: #6aa0c4;
-    color: black;
-}
-
-.areaLancamento2 {
-    width: 80%;
-    height: 100%;
-    background-color: #76B8D4;
-    border-radius: 15px;
-    padding: 20px;
-}
-
-
 .LancamentoCampos {
     display: flex;
     flex-direction: column;
@@ -492,8 +545,6 @@ input[type='file'] {
     gap: 10px;
     width: 80%;
 }
-
-
 
 
 /* Diario */
@@ -651,9 +702,56 @@ input[type='file'] {
 
 /* Balancete */
 
-#mainBalancete {
+#mainBalancete{
     display: flex;
     width: 90%;
+    background-color: rgb(43, 86, 114);
+    padding: 20px;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 5px;
+}
+#sectionBalancete{
+    background-color: rgba(84, 156, 53,0.4);
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    
+}
+
+.areaBalancete{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    gap: 20px;
+    background-color: rgba(84, 156, 53,0.8);
+    border-radius: 5px;
+}
+.itemBalancete{
+    width: 25%;
+    background-color: rgb(68, 132, 175);
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    border-bottom: 2px solid rgb(37, 81, 19);
+    border-right: 2px solid rgb(17, 52, 3);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
+/* Balanco */
+
+#mainBalanco {
+    display: flex;
+    width: 80%;
     background-color: rgb(26, 155, 24);
     padding: 20px;
     justify-content: space-around;
@@ -662,9 +760,9 @@ input[type='file'] {
     
 }
 
-.campoBalancete{
+.campoBalanco{
     display: flex;
-    width: 90%;
+    width: 95%;
     height: 100%;
     justify-content:center;
     align-items: start;
@@ -672,7 +770,7 @@ input[type='file'] {
     border-radius: 5px;
 }
 
-.sectionBalancete {
+.sectionBalanco {
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -682,7 +780,7 @@ input[type='file'] {
     padding: 30px;
 }
 
-.asideBalancete {
+.asideBalanco {
     width: 50%;
     display: flex;
     height: 100%;
@@ -693,7 +791,7 @@ input[type='file'] {
     gap: 40px;
 }
 
-.articleBalancete {
+.articleBalanco {
     width: 90%;
     display: flex;
     justify-content: center;
@@ -706,14 +804,29 @@ input[type='file'] {
     border-radius: 5px;
 }
 
-.articleBalancete h1 {
+.articleBalanco h1 {
     font-size: 35px;
 }
 
-.articleBalancete h2 {
+.articleBalanco h2 {
     font-size: 25px;
 }
 
+#btnImprimir{
+    width: 200px;
+    color: white;
+    background-color: #0056b3;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 20px;
+    border: 1px solid #2B5672;
+    transition: 0.5s;
+}
+
+#btnImprimir:hover {
+    background-color: #7ac8ff;
+    color: #2B5672;
+}
 
 .contaCampo {
     width: 90%;
@@ -812,7 +925,7 @@ footer {
 
 /* Rodapé inferior */
 .footer-bottom {
-    margin-top: 20px;
+    margin-top: 10px;
     font-size: 14px;
 }
 

@@ -118,6 +118,54 @@ app.get('/diario', (req, res) => {
         });
 });
 
+app.get('/balancete', async (req, res) => {
+    if (!req.session.empresa) {
+        return res.redirect('/login');
+    }
+
+    try {
+        const registrosEmpresa = await Registro.findAll({
+            where: {
+                id_empresa: req.session.empresa.id
+            },
+            attributes: [
+                'conta',
+                [fn('SUM', col('debito')), 'total_debito'],
+                [fn('SUM', col('credito')), 'total_credito']
+            ],
+            group: ['conta'],
+            order: [['createdAt', 'DESC']]
+        });
+
+        const registrosComTotal = registrosEmpresa.map(registro => {
+            const total_debito = parseFloat(registro.get('total_debito')) || 0;
+            const total_credito = parseFloat(registro.get('total_credito')) || 0;
+            const total = total_debito - total_credito;
+
+            return {
+                conta: registro.get('conta'),
+                total_debito,
+                total_credito,
+                total,
+                isPositive: total > 0,
+                isNegative: total < 0,
+                isZero: total == 0,
+                isPL: registro.get('conta') === 'Capital Social'
+            };
+        });
+
+      
+        
+            res.render('balancete', {
+                registrosComTotal,
+            });
+    } catch (err) {
+        console.log(err);
+        res.status(500).send('Erro ao buscar registros.');
+    }
+});
+
+
 // Rota do lançamento de registros
 app.get('/lancamento', (req, res) => {
     if (!req.session.empresa) {
@@ -158,7 +206,7 @@ app.get('/razao', async (req, res) => {
 });
 
 // Rota do balancete de registros
-app.get('/balancete', async (req, res) => {
+app.get('/balanco', async (req, res) => {
     if (!req.session.empresa) {
         return res.redirect('/login');
     }
@@ -206,7 +254,7 @@ app.get('/balancete', async (req, res) => {
             .filter(registro => registro.isPL)
             .reduce((sum, registro) => sum + registro.total, 0); 
 
-            res.render('balancete', {
+            res.render('balanco', {
                 registrosComTotal,
                 totalAtivos,
                 totalPassivos,
