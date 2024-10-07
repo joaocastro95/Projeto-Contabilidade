@@ -1,0 +1,6 @@
+services:
+  backend:
+    build:
+      context: .
+    ports:
+      - "80:3000"
