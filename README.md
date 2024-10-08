@@ -10,9 +10,13 @@ A ***TaxFree*** é uma projeto desenvolvida em JavaScript/Node.js com integraç�
 2. Facilitar o controle e a análise financeira por meio de ferramentas como razão, balancete e diário, que oferecem uma visão abrangente da saúde financeira.
 3. Apoiar decisões estratégicas dos gestores, fornecendo informações financeiras precisas e acessíveis para o crescimento sustentável do negócio.
 
-## 🎬 Demonstração
+## 🎬 Projecão
 
-Abaixo estão algumas imagens e descrições que mostram como é o ambiente da **TaxFree** funciona:
+O projeto foi desenvolvido utilizando o Figma, uma ferramenta de design colaborativo que permite a criação de interfaces de usuário de forma intuitiva e eficaz. Com o Figma, foi possível elaborar protótipos interativos e layouts atraentes, facilitando a visualização das funcionalidades do software. Essa abordagem colaborativa não apenas melhorou o processo de design, mas também garantiu que a experiência do usuário fosse priorizada, resultando em uma interface amigável e funcional que atende às necessidades dos usuários de forma prática e eficiente. Abaixo estão algumas imagens e descrições que mostram como a projeção do **TaxFree**:
+
+![Projeção 1](/public/img/print3.jpg)
+
+![Projeção 2](/public/img/print4.jpg)
 
 ### 🌐 Interface Web
 
