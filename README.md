@@ -84,6 +84,7 @@ Mantivemos uma estrutura organizada para facilitar a manutenção e a compreens�
 - `Dockerfile` - Arquivo de definição da imagem Docker.
 - `package.json` e `package-lock.json` - Dependências do Node.js.
 - `README.md` - Documentação do projeto.
+
   ---
 ## 🚀 Tecnologias Utilizadas
 
