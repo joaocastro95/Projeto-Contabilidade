@@ -105,8 +105,8 @@ Mantivemos uma estrutura organizada para facilitar a manutenção e a compreens�
 
 ## 📝 Autores
 
-- 👩🏼‍💻[Danilo Vaz](https://github.com/danilovaz7)
-- 👨🏻‍💻[Enzo Fonseca](https://github.com/EnzoFonseca04)
-- 👨🏻‍💻[Isabela Masseli](https://github.com/joaocastro95)
-- 👨🏻‍💻[João Castro](https://github.com/joaocastro95)
-- 👨🏻‍💻[Pedro Vella](https://github.com/PedroVella)
+- 🍛[Danilo Vaz](https://github.com/danilovaz7)
+- 🫏[Enzo Fonseca](https://github.com/EnzoFonseca04)
+- 🏳️‍🌈[Isabela Masseli](https://github.com/joaocastro95)
+- 🐂[João Castro](https://github.com/joaocastro95)
+- 🕯️[Pedro Vella](https://github.com/PedroVella)
