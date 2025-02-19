@@ -105,8 +105,6 @@ Mantivemos uma estrutura organizada para facilitar a manutenção e a compreens�
 
 ## 📝 Autores
 
-- [Danilo Vaz](https://github.com/danilovaz7)
-- [Enzo Fonseca](https://github.com/EnzoFonseca04)
-- [Isabela Masseli](https://github.com/joaocastro95)
-- [João Castro](https://github.com/joaocastro95)
-- [Pedro Vella](https://github.com/PedroVella)
+| [<img loading="lazy" src="https://avatars.githubusercontent.com/u/131407565?v=4" width=115><br><sub>Danilo Vaz</sub>](https://github.com/danilovaz7) | [<img loading="lazy" src="https://avatars.githubusercontent.com/u/132524175?v=4" width=115><br><sub>João Castro</sub>](https://github.com/joaocastro95) | [<img loading="lazy" src="https://avatars.githubusercontent.com/u/173521501?v=4" width=115><br><sub>Pedro Vella</sub>](https://github.com/PedroVella) | [<img loading="lazy" src="https://avatars.githubusercontent.com/u/157428841?v=4" width=115><br><sub>Enzo Fonseca</sub>](https://github.com/EnzoFonseca04) | [<img loading="lazy" src="https://avatars.githubusercontent.com/u/184224916?v=4" width=115><br><sub>Isaac Mxd</sub>](https://github.com/isaamxd) |
+| --- | --- | --- | --- | --- |
+
