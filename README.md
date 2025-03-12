@@ -55,7 +55,7 @@ Para testar o projeto localmente, siga estas etapas:
 Isso abrirá a interface web do projeto. Se o servidor estiver funcionando corretamente, você verá a página principal onde poderá utilizar a "TaxFree".
 
 #### 📝 Observação
-Se você encontrar algum problema ou a página não carregar, verifique as mensagens no terminal para possíveis erros e certifique-se de que o servidor está rodando corretamente. Caso precise de mais assistência, consulte a seção de [Autores] e entre em contato conosco.
+Se você encontrar algum problema ou a página não carregar, verifique as mensagens no terminal para possíveis erros e certifique-se de que o servidor está rodando corretamente. Caso precise de mais assistência, consulte a seção de [Autores](#-autores) e entre em contato conosco.
 
 
 ## 🛠️ Estrutura do Projeto
